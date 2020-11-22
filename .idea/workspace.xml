@@ -20,16 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f595f907-5f74-4de0-a2dc-4ceec8898053" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/ProgramController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/index/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/program/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/program/program.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProgramController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProgramController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/program/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,8 +165,10 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/templates/Program" />
       <recent name="$PROJECT_DIR$/templates" />
+      <recent name="$PROJECT_DIR$/templates/program" />
+      <recent name="$PROJECT_DIR$/templates/index" />
+      <recent name="$PROJECT_DIR$/templates/Program" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -185,7 +183,7 @@
       <workItem from="1605549448305" duration="621000" />
       <workItem from="1605687266035" duration="603000" />
       <workItem from="1605794027577" duration="291000" />
-      <workItem from="1606053418062" duration="6639000" />
+      <workItem from="1606053418062" duration="8515000" />
     </task>
     <servers />
   </component>
@@ -214,5 +212,9 @@
     </state>
     <state x="2663" y="298" width="424" height="491" key="FileChooserDialogImpl/72.27.1848.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605549466946" />
     <state x="787" y="318" key="FileChooserDialogImpl/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605794316143" />
+    <state x="610" y="182" width="762" height="749" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606061741332">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="610" y="182" width="762" height="749" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1606061741332" />
   </component>
 </project>
