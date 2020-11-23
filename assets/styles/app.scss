@@ -1,0 +1,18 @@
+$theme-colors: (
+        "primary": #4080bf,
+        "secondary": #993333,
+        "dark": #595959,
+        "light": #ffff,
+);
+
+$text-color: #595959;
+$other-color: #ffff;
+
+nav a{
+  color: $other-color;
+  &:hover{
+    color: $text-color;
+  }
+}
+
+@import "~bootstrap/scss/bootstrap";
