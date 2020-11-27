@@ -1,13 +1,7 @@
 $theme-colors: (
-        "primary": #4080bf,
-        "secondary": #993333,
+  "primary": blue,
+  "secondary": yellow,
+  "backgraund_color": gray,
 );
-
-nav a{
-  color: $other-color;
-  &:hover{
-    color: $text-color;
-  }
-}
 
 @import "~bootstrap/scss/bootstrap";
