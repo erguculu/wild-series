@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce693d3ece5894d84a82d5400e1cdcc1",
+    "content-hash": "220f91dd99c5c89282b513a7ab5e3f75",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -2784,16 +2784,16 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v5.1.8",
+            "version": "v5.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "829ca6bceaf68036a123a13a979f3c89289eae78"
+                "reference": "8b2ec9f453430252379aea343d02ed3579b18b44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/829ca6bceaf68036a123a13a979f3c89289eae78",
-                "reference": "829ca6bceaf68036a123a13a979f3c89289eae78",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/8b2ec9f453430252379aea343d02ed3579b18b44",
+                "reference": "8b2ec9f453430252379aea343d02ed3579b18b44",
                 "shasum": ""
             },
             "require": {
@@ -2851,7 +2851,7 @@
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/dependency-injection/tree/v5.1.8"
+                "source": "https://github.com/symfony/dependency-injection/tree/v5.1.9"
             },
             "funding": [
                 {
@@ -2867,7 +2867,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-27T10:11:13+00:00"
+            "time": "2020-11-28T10:57:20+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+{% for program in programs %}
+<h2><a href="{{ path('program_show', { id: program.id }) }}">{{ program.id }} / {{ program.title }}</a></h2>
+<p>{{ program. summary }}</p>
+{% else %}
+<p>Aucune série à afficher.</p>
+{% endfor %}
+{% endblock %}
