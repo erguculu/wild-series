@@ -1,29 +1,17 @@
 {# templates/program/episode_show.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %} Episode #{{ episode.number }}{% endblock %}
+{% block title %}Saison #{{ season.number }}{% endblock %}
 
 {% block body %}
     <div class="container-fluid">
         <div class="container">
             <div class="season_description">
-                <h1> {{ program.title }}</h1>
-                <h2>Saison {{ season.number }}</h2>
-
-                <p>{{ season.description }}</p>
-
-            <h1>Les épisodes de cette saison :</h1>
-
-                <ul>
-                    {% for episode in season.episodes %}
-                        <li>
-                            <h2>{{ episode.title }}</h2>
-                            <div class="season">
-                                <a href="{{ path("program_episode_show", { 'programId': program.id, 'seasonId' : season.id, 'episodeId' : episode.id}) }}"> Détail de l'épisode  {{ episode.number }}</a>
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
+                <h2>{{ Program.title }}, Saison {{ season.number }}, Episode {{ episode.number }}</h2>
+                    <p>Episode : {{ episode.title }}</p>
+                    <p>Résumé : {{ episode.synopsis }}</p>
+                    <a href="{{ path('program_season_show', { programId: Program.id, seasonId: season.id }) }}">
+                         Retour à la liste des épisodes de {{Program.title}}</a>
             </div>
 
             <a href="{{ path('program_index') }}">
