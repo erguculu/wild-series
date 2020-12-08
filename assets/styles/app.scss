@@ -1,7 +1,9 @@
-$theme-colors: (
-  "primary": blue,
-  "secondary": yellow,
-  "backgraund_color": gray,
-);
-
 @import "~bootstrap/scss/bootstrap";
+
+$theme-colors: (
+"primary":yellow,
+"secondary": blue,
+);
+body {
+    background-color: yellowgreen;
+}

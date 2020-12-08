@@ -3,6 +3,9 @@
 {% block title %}All programs{% endblock %}
 
 {% block body %}
+ <div class="container-fluid">
+        <div class="container">
+            <div class="season_description">
     <h1>Liste des séries: </h1>
     {% for program in programs %}
         <div>
@@ -17,4 +20,5 @@
     <a href="{{ path('app_index') }}">
         Retour à l'accueil
     </a>
+ </div>
 {% endblock %}
