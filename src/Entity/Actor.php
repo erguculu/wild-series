@@ -31,6 +31,7 @@ class Actor
 
     /**
      * @ORM\ManyToMany(targetEntity=Program::class, inversedBy="actors")
+     * ORM\JoinTable(name="firstname")
      */
     private $programs;
 

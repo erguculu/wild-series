@@ -8,7 +8,7 @@
             <div class="category_description">
 <h2>Catégories</h2>
 {% for category in categories %}
-<p><a href="{{ path('category_show', { categoryName: category.name }) }}">{{ loop.index }} / {{ category.name }}</a></p>
+<p><a href="{{ path('category_show', { categoryName: category.name }) }}">{{ loop.index }} - {{ category.name }}</a></p>
 {% else %}
    </div>
     </div>

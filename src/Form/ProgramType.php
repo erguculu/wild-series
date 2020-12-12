@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use App\Entity\Actor;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
 class ProgramType extends AbstractType
@@ -19,8 +21,16 @@ class ProgramType extends AbstractType
             ->add('poster', TextType::class)
             ->add('country', TextType::class)
             ->add('year')
-            ->add('category', null, ['choice_label' => 'name'])
-        ;
+            ->add('category', null, ['choice_label' => 'name'
+        ]);
+        
+        $builder->add('actors', EntityType::class, [
+                'class' => Actor::class,
+                'choice_label' => 'firstname',
+                'multiple' => true,
+                'expanded' => true,
+                'by_reference'=> false,
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

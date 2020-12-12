@@ -2,8 +2,11 @@
 
 {% extends "base.html.twig" %}
 
+{% block title %}New Serie{% endblock %}
+
 {% block body %}
     {{ form_start(form) }}
+    {{form_row(form.actors)}}
     {{ form_widget(form) }}
     <input type='submit' value='Add série'>
     {{ form_end(form) }}
