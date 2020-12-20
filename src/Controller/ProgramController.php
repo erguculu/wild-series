@@ -13,6 +13,8 @@ use App\Entity\Episode;
 use Symfony\Component\HttpFoundation\Request; 
 use App\Form\ProgramType;
 use App\Service\Slugify;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 /**
 * @Route("/programs", name="program_")
@@ -36,18 +38,26 @@ class ProgramController extends AbstractController
     /**
      * @Route("/new", name="new")
      */
-    public function new(Request $request, Slugify $slugify) : Response
+    public function new(Request $request, Slugify $slugify, MailerInterface $mailer) : Response
     {
         
         $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-        $entityManager = $this->getDoctrine()->getManager();
-        $slug = $slugify->generate($program->getTitle());
-        $program->setSlug($slug);
-        $entityManager->persist($program);
-        $entityManager->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $slug = $slugify->generate($program->getTitle());
+            $program->setSlug($slug);
+            $entityManager->persist($program);
+            $entityManager->flush();
+
+        $email = (new Email())
+            ->from($this->getParameter('mailer_from'))
+            ->to('erguculu@hotmail.com')
+            ->from($this->getParameter('mailer_from'))
+            ->html($this->renderView('program/newProgramMail.html.twig', ['program' => $program]));
+
+        $mailer->send($email);
 
         return $this->redirectToRoute('program_index');
         }

@@ -1,0 +1,7 @@
+{% extends 'layoutMail.html.twig' %}
+
+{% block add %} episode {{ episode.title }} pour  {{ episode.season.program.title }}{% endblock %}
+
+{% block title %} episode {{ episode.title }}{% endblock %}
+
+{% block summary %}{{episode.synopsis }}{% endblock %}
