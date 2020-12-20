@@ -11,7 +11,7 @@
         <div>
             <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
             <p>{{ program.summary }}</p>
-            <a href="{{ path("program_show", { id: program.id }) }}">Plus de détail</a>
+            <a href="{{ path("program_show", { slug: program.slug }) }}">Plus de détail</a>
         </div>
     {% else %}
         Aucune série trouvée.

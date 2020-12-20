@@ -56,7 +56,7 @@ class ProgramController extends AbstractController
     }
 
    /**
-     * @Route("/{id<^[0-9]+$>}", name="show")
+     * @Route("/{slug}", name="show")
      * @return Response a response instance
      */
     public function show(Program $program):Response
@@ -68,8 +68,8 @@ class ProgramController extends AbstractController
     }
 
      /**
-     * @Route("/{programId}/season/{seasonId}", methods={"GET"}, name="season_show")
-     * @ParamConverter("program", options={"id" = "programId"})
+     * @Route("/{programSlug}/season/{seasonId}", methods={"GET"}, name="season_show")
+     * @ParamConverter("program", options={"mapping" : {"programSlug" : "slug"} })
      * @ParamConverter("season", options={"id" = "seasonId"})
      * @return Response a response instance
     */
@@ -84,10 +84,10 @@ class ProgramController extends AbstractController
     }
 
     /**
-     * @Route("/{programId}/seasons/{seasonId}/episodes/{episodeId}", methods={"GET"}, name="episode_show")
-     * @ParamConverter("program", options={"id" = "programId"})
+     * @Route("/{programSlug}/seasons/{seasonId}/episodes/{episodeSlug}", methods={"GET"}, name="episode_show")
+     * @ParamConverter("program", options={"mapping" : {"programSlug" : "slug"} })
      * @ParamConverter("season", options={"id" = "seasonId"})
-     * @ParamConverter("episode", options={"id" = "episodeId"})
+     * @ParamConverter("episode", options={"mapping" : {"episodeSlug" : "slug"} })
      * @return Response a response instance
     */
     public function showEpisode(Program $program, Season $season, Episode $episode): Response
