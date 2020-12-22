@@ -1,7 +1,30 @@
 {% extends 'layoutMail.html.twig' %}
 
-{% block add %} episode {{ episode.title }} pour  {{ episode.season.program.title }}{% endblock %}
+{% block title %}
+	Un nouvel épisode de
+	{{ program.title }}
+	a été ajoutée!
+{% endblock %}
 
-{% block title %} episode {{ episode.title }}{% endblock %}
+{% block body %}
 
-{% block summary %}{{episode.synopsis }}{% endblock %}
+	<h1>Nouvel épisode de
+		{{ program.title }}
+		ajouté</h1>
+	<p>Bonjour, un nouvel épisode de
+		{{ program.title}}
+		est apparu sur Wild Séries !<br>
+	</p>
+	<p>L'épisode n°{{ episode.number }}
+		intitulé
+		{{ episode.title }}</p>
+	<p>Le résumé d'épisode :
+		{{episode.synopsis }}</p>
+
+	<p>
+		<a href="http://localhost:8000/programs/{{ program.slug }}/seasons/{{ season.number }}">
+			Pour savoir plus
+		</a>
+	</p>
+
+{% endblock %}

@@ -1,23 +1,59 @@
 {# templates/program/episode_show.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}Saison #{{ season.number }}{% endblock %}
+{% block title %}Saison #{{ season.number }}
+{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="container">
-            <div class="season_description">
-               
-                <h2>{{ Program.title }}, Saison {{ season.number }}, Episode {{ episode.number }}</h2>
-                    <p>Episode : {{ episode.title }}</p>
-                    <p>Résumé : {{ episode.synopsis }}</p>
-                    <a href="{{ path('program_season_show', { programSlug: Program.slug, seasonId: season.id }) }}">
-                         Retour à la liste des épisodes de {{Program.title}}</a>
-            </div>
-                <a class="nav-link" href="{{ path('episode_new') }}">Ajouter un Episode</a>
-            <a href="{{ path('program_index') }}">
-                Retour à la liste des programmes
-            </a>
-        </div>
-    </div>
-{% endblock %}
+	<div class="container-fluid">
+		<div class="container">
+			<div class="season_description">
+
+				<h2>{{ program.title }}, Saison
+					{{ season.number }}, Episode
+					{{ episode.number }}</h2>
+				<p>Episode :
+					{{ episode.title }}</p>
+				<p>Résumé :
+					{{ episode.synopsis }}</p>
+			</div>
+            <div>
+			{% if app.user %}
+				<h3>Laisse un commentaire</h3>
+				<div class="center container-fluid">
+					<div class="col-lg-6">
+						{{ form_start(form) }}
+						{{ form_errors(form) }}
+						{{ form_widget(form) }}
+						<input type='submit' value='Ajouter !'>
+						{{ form_end(form) }}
+					</div>
+				{% endif %}
+				<h3>Derniers commentaires</h3>
+				<p>
+					{% for comment in comments %}
+					</p>
+				</p>
+				<p>
+					Note:
+					{{ comment.rate }}
+					:
+					{{ comment.comment }}</p>
+
+			</div>
+		{% else %}
+				<p>
+					Aucun commentaire pour l'instant
+				</p>
+			</div>
+		{% endfor %}
+
+		<a href="{{ path('program_season_show', { programSlug: program.slug, seasonId: season.id }) }}">
+			Retour à la liste des épisodes de
+			{{program.title}}</a>
+	</div>
+	<a class="nav-link" href="{{ path('episode_new') }}">Ajouter un Episode</a>
+	<a href="{{ path('program_index') }}">
+		Retour à la liste des programmes
+	</a>
+</div></div>{% endblock %}

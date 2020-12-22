@@ -1,8 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  <div class="container-fluid">
-    <h1>Bienvenue sur Wild Series</h1>
-    </div>
+	<div class="container-fluid">
+		<h1>Bienvenue sur Wild Series</h1>
+	</div>
+
+	<div class="center">
+		{% if app.user %}
+			{{ app.user.email }}
+			<a href="{{ path('app_logout') }}">
+				Se déconnecter</a>
+		{% else %}
+			<a href="{{ path('app_login') }}">
+				Se connecter</a>
+		{% endif %}
+	</div>
 
 {% endblock %}
