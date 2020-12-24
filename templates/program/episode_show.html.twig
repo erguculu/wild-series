@@ -17,43 +17,49 @@
 				<p>Résumé :
 					{{ episode.synopsis }}</p>
 			</div>
-            <div>
-			{% if app.user %}
-				<h3>Laisse un commentaire</h3>
-				<div class="center container-fluid">
-					<div class="col-lg-6">
-						{{ form_start(form) }}
-						{{ form_errors(form) }}
-						{{ form_widget(form) }}
-						<input type='submit' value='Ajouter !'>
-						{{ form_end(form) }}
-					</div>
-				{% endif %}
-				<h3>Derniers commentaires</h3>
-				<p>
-					{% for comment in comments %}
-					</p>
-				</p>
-				<p>
-					Note:
-					{{ comment.rate }}
-					:
-					{{ comment.comment }}</p>
-
+			<div>
+				{% if app.user %}
+					<h3>Laisse un commentaire</h3>
+					<div class="center container-fluid">
+						<div class="col-lg-6">
+							{{ form_start(form) }}
+							{{ form_errors(form) }}
+							{{ form_widget(form) }}
+							<input type='submit' value='Ajouter !'>
+							{{ form_end(form) }}
+						</div>
+					{% endif %}
+					{% if comments == true %}
+			<div class="col-6">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Note</th>
+							<th scope="col">Commentaire</th>
+							<th scope="col">Auteur</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for comment in comments %}
+							<tr>
+								<td>{{ comment.rate }}/ 5</td>
+								<td>{{ comment.comment }}</td>
+								<td>
+									 {% if app.user %}
+                    					{% if is_granted("ROLE_ADMIN") or app.user.email == comment.user.email %}
+									<form method="post" action="{{ path('comment_delete', {'id': comment.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer ce commentaire ?');">
+										<input type="hidden" name="_method" value="DELETE">
+										<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comment.id) }}">
+										<button class="btn btn-danger">Supprimer</button>
+									</form>
+										{% endif %}
+									{% endif %}
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
 			</div>
-		{% else %}
-				<p>
-					Aucun commentaire pour l'instant
-				</p>
-			</div>
-		{% endfor %}
-
-		<a href="{{ path('program_season_show', { programSlug: program.slug, seasonId: season.id }) }}">
-			Retour à la liste des épisodes de
-			{{program.title}}</a>
+		{% endif %}
 	</div>
-	<a class="nav-link" href="{{ path('episode_new') }}">Ajouter un Episode</a>
-	<a href="{{ path('program_index') }}">
-		Retour à la liste des programmes
-	</a>
-</div></div>{% endblock %}
+</div>{% endblock %}

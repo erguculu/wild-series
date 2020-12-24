@@ -3,6 +3,9 @@
 {% block title %}{% endblock %}
 
 {% block body %}
+{% if is_granted("ROLE_ADMIN") %}
+    <a href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer</a>
+{% endif %}
 {% for program in programs %}
 <h2><a href="{{ path('program_show', { slug: program.slug  }) }}">{{ program.id }} :  {{ program.title }}</a></h2>
 <p>{{ program. summary }}</p>

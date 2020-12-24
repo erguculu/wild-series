@@ -40,6 +40,7 @@ class Comment
      */
     private $episode;
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -92,6 +93,5 @@ class Comment
 
         return $this;
     }
-
 
 }
