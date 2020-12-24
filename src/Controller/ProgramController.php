@@ -130,13 +130,5 @@ class ProgramController extends AbstractController
                 'form' => $form->createView(),
                 'comments' => $comments
             ]);
-
-        return $this->render('program/episode_show.html.twig', [
-            'Program' => $program,
-            'season' => $season,
-            'episode' => $episode,
-            'form' => $form->createView(),
-            'comments' => $comments
-        ]);
     }
 }
