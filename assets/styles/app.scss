@@ -1,9 +1,13 @@
 @import "~bootstrap/scss/bootstrap";
-
-$theme-colors: (
-"primary":yellow,
-"secondary": blue,
-);
+$theme-colors: ( "primary":yellow, "secondary": blue, );
 body {
-    background-color: yellowgreen;
+    background-color: turquoise;
+}
+
+.title {
+    text-align: center;
+}
+
+.title2 {
+    text-align: center;
 }

@@ -158,7 +158,6 @@ class ProgramController extends AbstractController
                 'form' => $form->createView(),
                 'comments' => $comments
             ]);
-
     }
 
 }

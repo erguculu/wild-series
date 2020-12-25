@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1> Mon profil </h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            {% if app.user %}
+                                {{ app.user.username }} 
+                            {% endif %}
+                        </tr>
+                </tbody>
+            </table>
+{% endblock %}
