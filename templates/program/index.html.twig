@@ -1,24 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}All programs{% endblock %}
+{% block title %}All programs
+{% endblock %}
 
 {% block body %}
- <div class="container-fluid">
-        <div class="container">
-            <div class="season_description">
-    <h1>Liste des séries: </h1>
-    {% for program in programs %}
-        <div>
-            <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
-            <p>{{ program.summary }}</p>
-            <a href="{{ path("program_show", { slug: program.slug }) }}">Plus de détail</a>
-        </div>
-    {% else %}
-        Aucune série trouvée.
-    {% endfor %}
-    <a class="nav-link" href="{{ path('program_new') }}">Ajouter une Série</a>
-    <a href="{{ path('app_index') }}">
-        Retour à l'accueil
-    </a>
- </div>
-{% endblock %}
+	<h1>Toutes les séries</h1>
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+	<button>Rechercher</button>
+	{{ form_end(form) }}
+	<div class="container-fluid">
+		<div class="container">
+			<div class="season_description">
+				<h1>Liste des séries:
+				</h1>
+				{% for program in programs %}
+					<div>
+						<h2>{{ loop.index }}
+							{{ program.title }}
+							- Catégorie :
+							{{ program.category.name }}</h2>
+						<p>{{ program.summary }}</p>
+						<a href="{{ path("program_show", { slug: program.slug }) }}">Plus de détail</a>
+					</div>
+				{% else %}
+					Aucune série trouvée.
+				{% endfor %}
+				<a class="nav-link" href="{{ path('program_new') }}">Ajouter une Série</a>
+				<a href="{{ path('app_index') }}">
+					Retour à l'accueil
+				</a>
+			</div>
+		{% endblock %}
