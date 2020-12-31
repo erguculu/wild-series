@@ -20,6 +20,7 @@ use Symfony\Component\Mime\Email;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Form\SearchProgramType;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
 * @Route("/programs", name="program_")
@@ -31,8 +32,14 @@ class ProgramController extends AbstractController
      * @Route("/", name="index")
      * @return Response A response instance
      */
-    public function index(Request $request, ProgramRepository $programRepository): Response
+    public function index(Request $request, ProgramRepository $programRepository,SessionInterface $session): Response
     {
+        if (!$session->has('total')) {
+            $session->set('total', 0); // if total doesn’t exist in session, it is initialized.
+        }
+    
+        $total = $session->get('total'); // get actual value in session with ‘total' key.
+
         $form = $this->createForm(SearchProgramType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -65,6 +72,8 @@ class ProgramController extends AbstractController
             $program->setOwner($this->getUser());
             $entityManager->flush();
 
+            $this->addFlash('success', 'Votre série a été bien créée');
+
         $email = (new Email())
             ->from($this->getParameter('mailer_from'))
             ->to('erguculu@hotmail.com')
@@ -93,6 +102,8 @@ class ProgramController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Votre série a été bien modofiée');
 
             return $this->redirectToRoute('program_index');
         }

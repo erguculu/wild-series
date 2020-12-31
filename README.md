@@ -29,3 +29,5 @@ quest 20 : https://drive.google.com/file/d/1WtVFe1Ob0_a7KuBOk600QmkrBEtGs0Wp/vie
 quest 21 : https://drive.google.com/file/d/1r7Q7yfT20STdu20hAxgCrC5eVhJjYzPP/view?usp=sharing
 
 quest 22 : https://drive.google.com/file/d/1iaRBW0VDB2u2ibVnXRMza0TpoKROk3Jg/view?usp=sharing
+
+quest 23 : https://drive.google.com/file/d/17dN5D82Q803wFrsIT_VzeYf7Z6XMn70Z/view?usp=sharing

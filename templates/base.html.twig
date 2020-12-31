@@ -2,25 +2,23 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Bienvenue!{% endblock %}</title>
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
-    <link rel="icon" href="/build/favicon.ico" />
 </head>
 <body>
-<header>
-    {% include "_navbar.html.twig"%}
-</header>
-{% block body %}
-    {% block javascripts %}
+{% block header %} {% include '_navbar.html.twig' %} {% endblock %}
+{% for category, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+{% block body %}{% endblock %}
+{% block javascripts %}
     {{ encore_entry_script_tags('app') }}
-    {% endblock %}
-
 {% endblock %}
-
-
 </body>
 </html>

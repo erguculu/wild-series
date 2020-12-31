@@ -41,7 +41,9 @@ class CommentController extends AbstractController
             $entityManager->persist($comment);
             $comment->setUser($this->getUser());
             $entityManager->flush();
-            
+
+            $this->addFlash('success', 'Votre commantaire a été bien ajoutée');
+
             return $this->redirect($request->server->get('HTTP_REFERER'));
         }
 
@@ -73,6 +75,8 @@ class CommentController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'Votre commantaire a été bien editée');
+
             return $this->redirectToRoute('comment_index');
         }
 
@@ -92,6 +96,8 @@ class CommentController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($comment);
             $entityManager->flush();
+
+            $this->addFlash('danger', 'Votre commantaire a été bien suprimée');
         }
 
          return $this->redirect($request->server->get('HTTP_REFERER'));

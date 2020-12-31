@@ -1,27 +1,13 @@
 {% extends 'layoutMail.html.twig' %}
-
-!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>
-			{% block title %}Nouvelle Série
-			{% endblock %}
-		</title>
-	</head>
-	<body>
-		{% block body %}
-			<h1>Nouvelle série
-				{{ program.title }}
-				crée</h1>
-			<p>Bonjour, un nouveau programme est apparu sur Wild Séries !
-			</p>
-			<p>Le résume :
-				{{program.summary }}</p>
-			<a href="http://localhost:8000/programs/show/{{ program.slug }}">
-				Voir la série</a>
-		</body>
-	</html>
-</p>
-{% endblock %}</body></html>
+{% block title %}Nouvelle Série {% endblock %}
+{% block body %}
+	<h1>Nouvelle série
+		{{ program.title }}
+		crée</h1>
+	<p>Bonjour, un nouveau série est apparu sur Wild Séries !
+	</p>
+	<p>Le résume :
+		{{program.summary }}</p>
+	<a href="http://localhost:8000/programs/show/{{ program.slug }}">
+		Voir la série</a>
+{% endblock %}

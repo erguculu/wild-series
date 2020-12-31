@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Edit Episode</h1>
 
-    {{ include('episode/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('episode/_form.html.twig', {'button_label': 'mettre à jour'}, { 'attr': {'class': 'btn btn-success'}} ) }}
 
     <a href="{{ path('episode_index') }}">back to list</a>
 
