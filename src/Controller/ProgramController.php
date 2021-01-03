@@ -21,6 +21,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Form\SearchProgramType;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
 * @Route("/programs", name="program_")
@@ -178,6 +179,24 @@ class ProgramController extends AbstractController
                 'form' => $form->createView(),
                 'comments' => $comments
             ]);
+    }
+
+      /**
+     * @Route("/{slug}/watchlist", methods={"GET","POST"}, name="watchlist")
+     * @param Program $program
+     * @param EntityManagerInterface $entityManager
+     * @return Response
+     */
+    public function addToWatchlist(Program $program, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->getUser()->getWatchlist()->contains($program)) $this->getUser()->removeWatchlist($program); else {
+            $this->getUser()->addWatchlist($program);
+        }
+        $entityManager->flush();
+
+        return $this->json([
+            'isInWatchlist' => $this->getUser()->isInWatchlist($program)
+        ]);
     }
 
 }

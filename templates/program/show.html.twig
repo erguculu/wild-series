@@ -35,6 +35,13 @@
 					<li>Aucun acteur pour cette série</li>
 				{% endfor %}
 			</ul>
+            {% if app.user %}
+                <button id="watchlist" >
+                    <i id="watchlistIcon" class="watchlist {{ app.user.isInWatchlist(program) ? 'fas' : 'far' }} fa-heart fa-2x ml-2"
+                       data-href="{{ path("program_watchlist", { slug: program.slug}) }}"
+                    ></i>
+                </button>
+            {% endif %}
 		</div>
 	</div>
 
@@ -43,3 +50,6 @@
 	</a>
 
 {% endblock %}
+ {% block javascripts %}
+     {{ parent() }}
+ {% endblock %}
