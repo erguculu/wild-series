@@ -1,7 +1,7 @@
 {# templates/program/episode_show.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}Saison #{{ season.number }}
+{% block title %}{{ 'episode'|trans }} {{ season.number }}
 {% endblock %}
 
 {% block body %}
@@ -9,17 +9,17 @@
 		<div class="container">
 			<div class="season_description">
 
-				<h2>{{ program.title }}, Saison
-					{{ season.number }}, Episode
+				<h2>{{ program.title }}, {{ 'season'|trans }}
+					{{ season.number }}, {{ 'episode'|trans }}
 					{{ episode.number }}</h2>
-				<p>Episode :
+				<p>{{ 'episode'|trans }}
 					{{ episode.title }}</p>
-				<p>Résumé :
+				<p>{{ 'summary'|trans }} :
 					{{ episode.synopsis }}</p>
 			</div>
 			<div>
 				{% if app.user %}
-					<h3>Laisse un commentaire</h3>
+					<h3>{{ 'add.comment'|trans }}</h3>
 					<div class="center container-fluid">
 						<div class="col-lg-6">
 							{{ form_start(form) }}

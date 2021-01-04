@@ -1,23 +1,23 @@
 {# templates/program/season_show.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}Saison #{{ season.number }}{% endblock %}
+{% block title %}{{ 'season'|trans }} {{ season.number }}{% endblock %}
 
 {% block body %}
     <div class="container-fluid">
         <div class="container">
             <div class="season_description">
                 <h1> {{ program.title }}</h1>
-                <h2>Saison {{ season.number }}</h2>
+                <h2>{{ 'season'|trans }}  {{ season.number }}</h2>
 
                 <p>{{ season.description }}</p>
 
-            <h1>Liste des episodes :</h1>
+            <h1>{{ 'all.episode'|trans }} :</h1>
 
                 <ul>
                     {% for episode in season.episodes %}
                         <li>
-                            <a href="{{ path("program_episode_show", {programSlug: program.slug, seasonId: season.id, episodeSlug: episode.slug }) }}">Episode {{episode.number}} : {{ episode.title }}</a>
+                            <a href="{{ path("program_episode_show", {programSlug: program.slug, seasonId: season.id, episodeSlug: episode.slug }) }}"> {{ 'episode'|trans }} {{episode.number}} : {{ episode.title }}</a>
                             
                         </li>
                     {% endfor %}
@@ -25,7 +25,7 @@
             </div>
 
             <a href="{{ path('program_index') }}">
-                Retour à la liste des programmes
+                 {{ 'back.program'|trans }}
             </a>
         </div>
     </div>

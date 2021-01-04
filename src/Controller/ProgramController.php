@@ -184,7 +184,6 @@ class ProgramController extends AbstractController
       /**
      * @Route("/{slug}/watchlist", methods={"GET","POST"}, name="watchlist")
      * @param Program $program
-     * @param EntityManagerInterface $entityManager
      * @return Response
      */
     public function addToWatchlist(Program $program, EntityManagerInterface $entityManager): Response

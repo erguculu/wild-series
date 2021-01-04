@@ -1,57 +1,62 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Wild Series</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+	<a class="navbar-brand" href="/">Wild Series</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
-            </li>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="/">Accueil
+					<span class="sr-only">(current)</span>
+				</a>
 			</li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('program_index') }}">Séries</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('program_new') }}">Ajouter une Série</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('category_index') }}">Categories</a>
-                <li class="nav-item">
-                <a class="nav-link" href="{{ path('category_new') }}">Ajouter une Categorie</a>
-            </li>
-             <li class="nav-item">
-                <a class="nav-link" href="{{ path('season_index') }}">Saisons</a>
-                <li class="nav-item">
-                <a class="nav-link" href="{{ path('season_new') }}">Ajouter une Saison</a>
-            </li>
-             <li class="nav-item">
-                <a class="nav-link" href="{{ path('episode_index') }}">Episodes</a>
-                <li class="nav-item">
-                <a class="nav-link" href="{{ path('episode_new') }}">Ajouter un Episode</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('actor_index') }}">Actors</a>
-            </li>
-            <li class="nav-item">
-				{% if app.user %}
-					{{ app.user.email }}
-					<a class="nav-link nav-style" href="{{ path('app_logout') }}">
-						Deconnexion</a>
-				{% else %}
-					<a class="nav-link nav-style" href="{{ path('app_login') }}">
-						Connection</a>
-				{% endif %}
-			</li>
-            <li class="nav-item">
-				{% if app.user %}
-					<a class="nav-link nav-style" href="{{ path('app_profile') }}">Mon compte</a>
-				{% else %}
-					<a class="nav-link nav-style" href="{{ path('app_register') }}">Créer un compte</a>
-				{% endif %}
-			</li>
-        </ul>
-    </div>
-</nav>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ path('program_index') }}">{{ 'program'|trans }}</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ path('program_new') }}">{{ 'add.a.program'|trans }}</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ path('category_index') }}">{{ 'category'|trans }}</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ path('category_new') }}">{{ 'add.a.category'|trans }}</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ path('season_index') }}">{{ 'season'|trans }} </a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ path('season_new') }}">{{ 'add.a.season'|trans }}</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ path('episode_index') }}">{{ 'episode'|trans }}</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ path('episode_new') }}">{{ 'add.an.episode'|trans }}</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ path('actor_index') }}">{{ 'actor'|trans }}</a>
+		</li>
+		<li class="nav-item">
+			{% if app.user %}
+				{{ app.user.email }}
+				<a class="nav-link nav-style" href="{{ path('app_logout') }}">
+					{{ 'account.logout'|trans }}</a>
+			{% else %}
+				<a class="nav-link nav-style" href="{{ path('app_login') }}">
+					{{ 'account.login'|trans }}</a>
+			{% endif %}
+		</li>
+		<li class="nav-item">
+			{% if app.user %}
+				<a class="nav-link nav-style" href="{{ path('app_profile') }}">{{ 'my.account'|trans }}</a>
+			{% else %}
+				<a class="nav-link nav-style" href="{{ path('app_register') }}">{{ 'account.create'|trans }}</a>
+			{% endif %}
+		</li>
+	</ul>
+	<a class="nav-item" href="{{ path('app_index', {'_locale':'fr'}) }}">Fr</a>
+	<a class="nav-item" href="{{ path('app_index', {'_locale':'en'}) }}">En</a>
+</div></div></nav>

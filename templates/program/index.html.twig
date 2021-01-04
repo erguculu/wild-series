@@ -1,10 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}All programs
-{% endblock %}
+{% block title %}{{ 'program'|trans }}{% endblock %}
 
 {% block body %}
-	<h1>Toutes les séries</h1>
+	<h1>{{ 'all.program'|trans }}</h1>
 	{{ form_start(form) }}
 	{{ form_widget(form) }}
 	<button>Rechercher</button>
@@ -12,29 +11,26 @@
 	<div class="container-fluid">
 		<div class="container">
 			<div class="season_description">
-				<h1>Liste des séries:
-				</h1>
 				{% for program in programs %}
 					<div>
 						<h2>{{ loop.index }}
 							{{ program.title }}
-							- Catégorie :
+							- {{ 'category'|trans }} 
 							{{ program.category.name }}</h2>
 						<p>{{ program.summary }}</p>
 						<a href="{{ path("program_show", { slug: program.slug }) }}">Plus de détail</a>
 					</div>
 				{% else %}
-					Aucune série trouvée.
+					 {{ 'no.serie.found'|trans }}
 				{% endfor %}
 				{% if app.user %}
 					<i class="{{ app.user.isInWatchlist(programs) ? 'fas' : 'far' }} fa-heart fa-xs watchlist"></i>
 				{% endif %}
-				<a class="nav-link" href="{{ path('program_new') }}">Ajouter une Série</a>
+				<a class="nav-link" href="{{ path('program_new') }}"> {{ 'add.aprogram'|trans }}</a>
 				<a href="{{ path('app_index') }}">
-					Retour à l'accueil
+					{{ 'back.home'|trans }}
 				</a>
 			</div>
 		{% endblock %}
 		{% block javascripts %}
-			{{ encore_entry_script_tags('watchlist') }}
 		{% endblock %}

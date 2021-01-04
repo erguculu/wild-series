@@ -1,15 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}
+	{{ 'category'|trans }}
+{% endblock %}
 
 {% block body %}
-{% if is_granted("ROLE_ADMIN") %}
-    <a href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer</a>
-{% endif %}
-{% for program in programs %}
-<h2><a href="{{ path('program_show', { slug: program.slug  }) }}">{{ program.id }} :  {{ program.title }}</a></h2>
-<p>{{ program. summary }}</p>
-{% else %}
-<p>Aucune série à afficher.</p>
-{% endfor %}
+	{% if is_granted("ROLE_ADMIN") %}
+		<a href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer</a>
+	{% endif %}
+	{% for program in programs %}
+		<h2>
+			<a href="{{ path('program_show', { slug: program.slug }) }}">{{ program.id }}
+				:
+				{{ program.title }}</a>
+		</h2>
+		<p>{{ program. summary }}</p>
+	{% else %}
+		{{ 'no.serie.found'|trans }}
+	{% endfor %}
+	
+	<a href="{{ path('category_index') }}">
+		{{ 'back.category'|trans }}
+	</a>
 {% endblock %}

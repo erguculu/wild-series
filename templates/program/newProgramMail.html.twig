@@ -1,12 +1,13 @@
 {% extends 'layoutMail.html.twig' %}
 {% block title %}Nouvelle Série {% endblock %}
 {% block body %}
-	<h1>Nouvelle série
+	<h1>{{ 'new.program'|trans }}
 		{{ program.title }}
 		crée</h1>
-	<p>Bonjour, un nouveau série est apparu sur Wild Séries !
+	<p>
+		{{ 'hello'|trans }}, {{ 'new.program'|trans }} {{ program.title }} {{ 'created'|trans }}on Wild Series
 	</p>
-	<p>Le résume :
+	<p>{{ 'summary'|trans }} 
 		{{program.summary }}</p>
 	<a href="http://localhost:8000/programs/show/{{ program.slug }}">
 		Voir la série</a>

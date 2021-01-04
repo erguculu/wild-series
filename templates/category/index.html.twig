@@ -1,19 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Catégories{% endblock %}
+{% block title %}
+	{{ 'category'|trans }}
+{% endblock %}
 
 {% block body %}
-  <div class="container-fluid">
-        <div class="container">
-            <div class="category_description">
-<h2>Catégories</h2>
-{% for category in categories %}
-<p><a href="{{ path('category_show', { categoryName: category.name }) }}">{{ loop.index }} - {{ category.name }}</a></p>
-{% else %}
-   </div>
-    </div>
-<p>Pas de catégories à afficher.</p>
-</div>
-{% endfor %}
- <a class="nav-link" href="{{ path('category_new') }}">Ajouter une catégorie</a>
+	<div class="container-fluid">
+		<div class="container">
+			<div class="category_description">
+				<h2>{{ 'all.category'|trans }}</h2>
+				{% for category in categories %}
+					<p>
+						<a href="{{ path('category_show', { categoryName: category.name }) }}">{{ loop.index }}
+							-
+							{{ category.name }}</a>
+					</p>
+			{% else %}
+				</div>
+			</div>
+			{{ 'no.category.found'|trans }}
+		</div>
+	{% endfor %}
+	<a href="{{ path('app_index') }}">
+		{{ 'back.home'|trans }}
+	</a>
 {% endblock %}
