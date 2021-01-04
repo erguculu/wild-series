@@ -16,25 +16,14 @@
 			<a class="nav-link" href="{{ path('program_index') }}">{{ 'program'|trans }}</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="{{ path('program_new') }}">{{ 'add.a.program'|trans }}</a>
-		</li>
-		<li class="nav-item">
 			<a class="nav-link" href="{{ path('category_index') }}">{{ 'category'|trans }}</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="{{ path('category_new') }}">{{ 'add.a.category'|trans }}</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="{{ path('season_index') }}">{{ 'season'|trans }} </a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="{{ path('season_new') }}">{{ 'add.a.season'|trans }}</a>
+			<a class="nav-link" href="{{ path('season_index') }}">{{ 'season'|trans }}
+			</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="{{ path('episode_index') }}">{{ 'episode'|trans }}</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="{{ path('episode_new') }}">{{ 'add.an.episode'|trans }}</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="{{ path('actor_index') }}">{{ 'actor'|trans }}</a>
@@ -57,6 +46,16 @@
 			{% endif %}
 		</li>
 	</ul>
-	<a class="nav-item" href="{{ path('app_index', {'_locale':'fr'}) }}">Fr</a>
-	<a class="nav-item" href="{{ path('app_index', {'_locale':'en'}) }}">En</a>
-</div></div></nav>
+	<ul>
+		{{ render(controller('App\\Controller\\ProgramController::navbarTop')) }}
+	</ul>
+	<div class="dropdown">
+		<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			Langues
+		</button>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			<a class="nav-item" href="{{ path('app_index', {'_locale':'fr'}) }}">Fr</a>
+			<a class="nav-item" href="{{ path('app_index', {'_locale':'en'}) }}">En</a>
+		</div>
+	</div>
+</div></nav>

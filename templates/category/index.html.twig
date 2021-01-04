@@ -21,6 +21,8 @@
 			{{ 'no.category.found'|trans }}
 		</div>
 	{% endfor %}
+	<a class="nav-link" href="{{ path('category_new') }}">{{ 'add.a.category'|trans }}</a>
+
 	<a href="{{ path('app_index') }}">
 		{{ 'back.home'|trans }}
 	</a>

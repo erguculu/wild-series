@@ -139,7 +139,7 @@
       </trans-unit>
       <trans-unit id="UMnErrQ" resname="actor">
         <source>actor</source>
-        <target>Acteur</target>
+        <target>Acteurs</target>
       </trans-unit>
       <trans-unit id="3efkCrC" resname="no.actor.found">
         <source>no.actor.found</source>
@@ -231,11 +231,11 @@
       </trans-unit>
       <trans-unit id="_ohHsMM" resname="create">
         <source>create</source>
-        <target>__create</target>
+        <target>Créer</target>
       </trans-unit>
       <trans-unit id="4mvHzEw" resname="created.new.episode">
         <source>created.new.episode</source>
-        <target>__created.new.episode</target>
+        <target>Créer nouvelle épisode</target>
       </trans-unit>
       <trans-unit id="olFl7Ry" resname="add.a.program">
         <source>add.a.program</source>

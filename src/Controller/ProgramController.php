@@ -11,7 +11,7 @@ use App\Entity\Program;
 use App\Entity\Season;
 use App\Entity\Episode;
 use App\Entity\Comment;
-use Symfony\Component\HttpFoundation\Request; 
+use Symfony\Component\HttpFoundation\Request;
 use App\Form\ProgramType;
 use App\Form\CommentType;
 use App\Service\Slugify;
@@ -22,10 +22,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Form\SearchProgramType;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\CategoryRepository;
 
 /**
-* @Route("/programs", name="program_")
-*/
+ * @Route("/programs", name="program_")
+ */
 class ProgramController extends AbstractController
 {
     /**
@@ -33,12 +34,12 @@ class ProgramController extends AbstractController
      * @Route("/", name="index")
      * @return Response A response instance
      */
-    public function index(Request $request, ProgramRepository $programRepository,SessionInterface $session): Response
+    public function index(Request $request, ProgramRepository $programRepository, SessionInterface $session): Response
     {
         if (!$session->has('total')) {
             $session->set('total', 0); // if total doesn’t exist in session, it is initialized.
         }
-    
+
         $total = $session->get('total'); // get actual value in session with ‘total' key.
 
         $form = $this->createForm(SearchProgramType::class);
@@ -49,8 +50,8 @@ class ProgramController extends AbstractController
         } else {
             $programs = $programRepository->findAll();
         }
-        
-        return $this->render('program/index.html.twig',[
+
+        return $this->render('program/index.html.twig', [
             'programs' => $programs,
             'form' => $form->createView(),
         ]);
@@ -59,9 +60,9 @@ class ProgramController extends AbstractController
     /**
      * @Route("/new", name="new")
      */
-    public function new(Request $request, Slugify $slugify, MailerInterface $mailer) : Response
+    public function new(Request $request, Slugify $slugify, MailerInterface $mailer): Response
     {
-        
+
         $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
         $form->handleRequest($request);
@@ -75,19 +76,19 @@ class ProgramController extends AbstractController
 
             $this->addFlash('success', 'Votre série a été bien créée');
 
-        $email = (new Email())
-            ->from($this->getParameter('mailer_from'))
-            ->to('erguculu@hotmail.com')
-            ->html($this->renderView('program/newProgramMail.html.twig', ['program' => $program]));
+            $email = (new Email())
+                ->from($this->getParameter('mailer_from'))
+                ->to('erguculu@hotmail.com')
+                ->html($this->renderView('program/newProgramMail.html.twig', ['program' => $program]));
 
-        $mailer->send($email);
+            $mailer->send($email);
 
-        return $this->redirectToRoute('program_index');
+            return $this->redirectToRoute('program_index');
         }
-     
+
         return $this->render('program/new.html.twig', ["form" => $form->createView()]);
     }
-     /**
+    /**
      * @Route("/programs/{slug}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Program $program): Response
@@ -115,24 +116,24 @@ class ProgramController extends AbstractController
         ]);
     }
 
-   /**
+    /**
      * @Route("/{slug}", name="show")
      * @return Response a response instance
      */
-    public function show(Program $program):Response
+    public function show(Program $program): Response
     {
-        
+
         return $this->render('program/show.html.twig', [
             'program' => $program
         ]);
     }
 
-     /**
+    /**
      * @Route("/{programSlug}/season/{seasonId}", methods={"GET"}, name="season_show")
      * @ParamConverter("program", options={"mapping" : {"programSlug" : "slug"} })
      * @ParamConverter("season", options={"id" = "seasonId"})
      * @return Response a response instance
-    */
+     */
 
     public function showSeason(Program $program, Season $season): Response
     {
@@ -149,7 +150,7 @@ class ProgramController extends AbstractController
      * @ParamConverter("season", options={"id" = "seasonId"})
      * @ParamConverter("episode", class="App\Entity\Episode", options={"mapping" : {"episodeSlug" : "slug"} })
      * @return Response a response instance
-    */
+     */
     public function showEpisode(Program $program, Season $season, Episode $episode, Request $request): Response
     {
         $comment = new Comment();
@@ -172,23 +173,27 @@ class ProgramController extends AbstractController
             ->getRepository(Comment::class)
             ->findBy(['episode' => $episode], ['id' => 'ASC'], 6);
 
-        return $this->render('program/episode_show.html.twig',
-            ['program' => $program,
+        return $this->render(
+            'program/episode_show.html.twig',
+            [
+                'program' => $program,
                 'season' => $season,
                 'episode' => $episode,
                 'form' => $form->createView(),
                 'comments' => $comments
-            ]);
+            ]
+        );
     }
 
-      /**
+    /**
      * @Route("/{slug}/watchlist", methods={"GET","POST"}, name="watchlist")
      * @param Program $program
      * @return Response
      */
     public function addToWatchlist(Program $program, EntityManagerInterface $entityManager): Response
     {
-        if ($this->getUser()->getWatchlist()->contains($program)) $this->getUser()->removeWatchlist($program); else {
+        if ($this->getUser()->getWatchlist()->contains($program)) $this->getUser()->removeWatchlist($program);
+        else {
             $this->getUser()->addWatchlist($program);
         }
         $entityManager->flush();
@@ -198,4 +203,15 @@ class ProgramController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/category", methods={"GET"}, name="list_category")
+     * @return Response
+     */
+    public function navbarTop(CategoryRepository $categoryRepository): Response
+    {
+        return $this->render('_navbartop.html.twig', [
+            'categories' => $categoryRepository->findBy([], ['id' => 'DESC']),
+        ]);
+    }
 }
