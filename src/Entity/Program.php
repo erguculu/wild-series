@@ -8,11 +8,15 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use DateTime;
 
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProgramRepository")
  * @UniqueEntity("title", message="Ce titre existe déjà dans les séries.")
+ *  @Vich\Uploadable
  */
 class Program
 {
@@ -28,7 +32,7 @@ class Program
      * @Assert\NotBlank(message="Le titre ne peut pas être vide")
      * @Assert\Length(max="255", maxMessage="Le titre saisi {{ value }} est trop long, max {{ limit }} caractères")
      */
-    private $title;
+    private ?string $title;
 
     /**
      * @ORM\Column(type="text")
@@ -37,9 +41,23 @@ class Program
     private $summary;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $poster;
+    private $poster = "";
+
+    /**
+     * @Vich\UploadableField(mapping="poster_file", fileNameProperty="poster")
+     * @Assert\File(
+     *     maxSize = "1024k",
+     *     mimeTypes = {"image/png",
+     *          "image/jpeg",
+     *          "image/jpg",
+     *          "image/gif",},
+     *     mimeTypesMessage = "Please upload an image"
+     * )
+     */
+    private ?File $posterFile = null;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="programs")
@@ -77,6 +95,10 @@ class Program
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="programs")
      */
     private $owner;
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
 
     public function __construct()
     {
@@ -122,6 +144,28 @@ class Program
     {
         $this->poster = $poster;
 
+        return $this;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getPosterFile(): ?File
+    {
+        return $this->posterFile;
+    }
+
+    /**
+     * @param File|null $posterFile
+     * @return mixed
+     */
+    public function setPosterFile(File $posterFile = null): self
+    {
+        $this->posterFile = $posterFile;
+        if ($posterFile) {
+            $this->updatedAt = new DateTime('now');
+        }
         return $this;
     }
 
@@ -238,6 +282,19 @@ class Program
     public function setOwner(?User $owner): self
     {
         $this->owner = $owner;
+
+        return $this;
+    }
+
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

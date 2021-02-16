@@ -8,6 +8,7 @@
     {% endfor %}
     <div class="container mt-4">
         {{ form_start(registrationForm) }}
+            <div class="col-md-4">
             {{ form_row(registrationForm.email) }}
             {{ form_row(registrationForm.plainPassword, {
                 label: 'Mot de passe'
@@ -17,6 +18,7 @@
             }) }}
 
             <button type="submit" class="btn btn-primary">Créer mon compte</button>
+        </div>
         {{ form_end(registrationForm) }}
     </div>
 {% endblock %}

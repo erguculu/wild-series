@@ -103,7 +103,7 @@
       </trans-unit>
       <trans-unit id="QGmRDZV" resname="back.program">
         <source>back.program</source>
-        <target>Back to program s</target>
+        <target>Back to programs</target>
       </trans-unit>
       <trans-unit id="oHaLAIB" resname="new.program">
         <source>new.program</source>
@@ -236,6 +236,42 @@
       <trans-unit id="olFl7Ry" resname="add.a.program">
         <source>add.a.program</source>
         <target>Add a program</target>
+      </trans-unit>
+      <trans-unit id="YFtyfT9" resname="actors">
+        <source>actors</source>
+        <target>Actors</target>
+      </trans-unit>
+      <trans-unit id="qp6bXJB" resname="see">
+        <source>see</source>
+        <target>See</target>
+      </trans-unit>
+      <trans-unit id="dgcyIXL" resname="no_actor">
+        <source>no_actor</source>
+        <target>No actor</target>
+      </trans-unit>
+      <trans-unit id="4YZuZg7" resname="back_home">
+        <source>back_home</source>
+        <target>Back to home</target>
+      </trans-unit>
+      <trans-unit id="7Ne.Tf9" resname="actor.add_title">
+        <source>actor.add_title</source>
+        <target>Actor name</target>
+      </trans-unit>
+      <trans-unit id="fp5aww8" resname="add">
+        <source>add</source>
+        <target>Add</target>
+      </trans-unit>
+      <trans-unit id="I5SCDa_" resname="see.more">
+        <source>see.more</source>
+        <target>See more</target>
+      </trans-unit>
+      <trans-unit id="Iu42eHc" resname="no.saison.found">
+        <source>no.saison.found</source>
+        <target>No saison found</target>
+      </trans-unit>
+      <trans-unit id="TBab3ot" resname="add.an.actor">
+        <source>add.an.actor</source>
+        <target>Add an actor</target>
       </trans-unit>
     </body>
   </file>

@@ -75,7 +75,7 @@
       </trans-unit>
       <trans-unit id="QGmRDZV" resname="back.program">
         <source>back.program</source>
-        <target>Retour vers la série</target>
+        <target>Retour vers les séries</target>
       </trans-unit>
       <trans-unit id="oHaLAIB" resname="new.program">
         <source>new.program</source>
@@ -179,7 +179,7 @@
       </trans-unit>
       <trans-unit id="0.u4IJJ" resname="back.category">
         <source>back.category</source>
-        <target>Retour catégorie</target>
+        <target>Retour catégories</target>
       </trans-unit>
       <trans-unit id="qvIyBkY" resname="title">
         <source>title</source>
@@ -240,6 +240,42 @@
       <trans-unit id="olFl7Ry" resname="add.a.program">
         <source>add.a.program</source>
         <target>Ajouter une série</target>
+      </trans-unit>
+      <trans-unit id="YFtyfT9" resname="actors">
+        <source>actors</source>
+        <target>Acteurs</target>
+      </trans-unit>
+      <trans-unit id="qp6bXJB" resname="see">
+        <source>see</source>
+        <target>Plus de détail</target>
+      </trans-unit>
+      <trans-unit id="dgcyIXL" resname="no_actor">
+        <source>no_actor</source>
+        <target>Pas de acteur</target>
+      </trans-unit>
+      <trans-unit id="4YZuZg7" resname="back_home">
+        <source>back_home</source>
+        <target>Retour à l'accueil</target>
+      </trans-unit>
+      <trans-unit id="7Ne.Tf9" resname="actor.add_title">
+        <source>actor.add_title</source>
+        <target>Ajouter un acteur</target>
+      </trans-unit>
+      <trans-unit id="fp5aww8" resname="add">
+        <source>add</source>
+        <target>Ajouter</target>
+      </trans-unit>
+      <trans-unit id="Iu42eHc" resname="no.saison.found">
+        <source>no.saison.found</source>
+        <target>Pas de saison</target>
+      </trans-unit>
+      <trans-unit id="I5SCDa_" resname="see.more">
+        <source>see.more</source>
+        <target>Plus de détail</target>
+      </trans-unit>
+      <trans-unit id="TBab3ot" resname="add.an.actor">
+        <source>add.an.actor</source>
+        <target>Ajouter un actor</target>
       </trans-unit>
     </body>
   </file>

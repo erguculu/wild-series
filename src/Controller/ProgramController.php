@@ -2,6 +2,7 @@
 // src/Controller/ProgramController.php
 namespace App\Controller;
 
+use App\Form\EpisodeType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -213,5 +214,24 @@ class ProgramController extends AbstractController
         return $this->render('_navbartop.html.twig', [
             'categories' => $categoryRepository->findBy([], ['id' => 'DESC']),
         ]);
+    }
+
+    /**
+     * @Route("/programs/{slug}", name="delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Program $program
+     * @return Response
+     */
+    public function delete(Request $request, Program $program): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$program->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($program);
+            $entityManager->flush();
+
+            $this->addFlash('danger', 'Votre série a été bien suprimé');
+        }
+
+        return $this->redirectToRoute('program_index');
     }
 }

@@ -1,55 +1,60 @@
 {# templates/program/show.html.twig #}
 {% extends 'base.html.twig' %}
-{% block title %}{{ 'program'|trans }}{{ program.id }}
+{% block title %}
+	{{ 'program'|trans }}{{ program.id }}
 {% endblock %}
 
 {% block body %}
+	<div class="container-fluid ml-2">
+		<div class="media">
+			<img class="align-self-start mr-3 poster" src="/uploads/{{program.poster}}" alt="{{ program.title }} poster">
+			<div class="media-body">
+				<div class="media-body">
+					<h1 class="mt-0">{{ program.title }}</h1>
+					<p>{{ program.summary }}</p>
+					<p>{{ 'category'|trans }}
+						:
+						{{ program.category.name }}</p>
+					<p>{{ 'all.season'|trans }}
+						:</p>
 
-	<div class="media">
-		<img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
-		<div class="media-body">
-			<h1 class="mt-0">{{ program.title }}</h1>
-			<p>{{ program.summary }}</p>
-			<p>{{ 'category'|trans }} :
-				{{ program.category.name }}</p>
-			<p>{{ 'all.season'|trans }} :</p>
+					<ul>
+						{% for season in program.seasons %}
+							<li>
+								<a href="{{ path("program_season_show", { programSlug: program.slug, seasonId: season.id }) }}">
+									{{ 'season'|trans }}
+									{{ season.number }}</a>
+							</li>
+						{% endfor %}
+					</ul>
+					<h2>
+						{{ 'actor'|trans }}
+						:
+					</h2>
+					<ul>
+						{% for actor in program.actors %}
+							<li>
+								<a href="{{ path('actor_show', {id : actor.id}) }}">{{ actor.firstname }}</a>
+							</li>
+						{% else %}
+							<li>{{ 'no.actor.found'|trans }}</li>
+						{% endfor %}
+					</ul>
+					{% if app.user %}
+						<button id="watchlist">
+							<i id="watchlistIcon" class="watchlist {{ app.user.isInWatchlist(program) ? 'fas' : 'far' }} fa-heart fa-2x ml-2" data-href="{{ path("program_watchlist", { slug: program.slug}) }}"></i>
+						</button>
+					{% endif %}
+				</div>
+			</div>
 
-			<ul>
-				{% for season in program.seasons %}
-					<li>
-						<a href="{{ path("program_season_show", { programSlug: program.slug, seasonId: season.id }) }}">
-							{{ 'season'|trans }}
-							{{ season.number }}</a>
-					</li>
-				{% endfor %}
-			</ul>
-			<h2>
-				{{ 'actor'|trans }} :
-			</h2>
-			<ul>
-				{% for actor in program.actors %}
-					<li>
-                        <a href="{{ path('actor_show', {id : actor.id}) }}">{{ actor.firstname }}</a>
-					</li>
-				{% else %}
-					<li>{{ 'no.actor.found'|trans }}</li>
-				{% endfor %}
-			</ul>
-            {% if app.user %}
-                <button id="watchlist" >
-                    <i id="watchlistIcon" class="watchlist {{ app.user.isInWatchlist(program) ? 'fas' : 'far' }} fa-heart fa-2x ml-2"
-                       data-href="{{ path("program_watchlist", { slug: program.slug}) }}"
-                    ></i>
-                </button>
-            {% endif %}
+			<a href="{{ path('program_index') }}">
+				{{ 'back.program'|trans }}
+			</a>
 		</div>
-	</div>
-
-	<a href="{{ path('program_index') }}">
-		{{ 'back.program'|trans }}
-	</a>
-
-{% endblock %}
- {% block javascripts %}
-     {{ parent() }}
- {% endblock %}
+		<a href="{{ path('program_edit', {'slug': program.slug}) }}">{{ 'edit'|trans }}</a>
+		{{ include('program/_delete_form.html.twig') }}
+	{% endblock %}
+	{% block javascripts %}
+		{{ parent() }}
+	{% endblock %}

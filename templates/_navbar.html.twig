@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar bg-dark">
 	<a class="navbar-brand" href="/">Wild Series</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -47,12 +47,15 @@
 		</li>
 	</ul>
 	<ul>
+		
 		{{ render(controller('App\\Controller\\ProgramController::navbarTop')) }}
+	
 	</ul>
 	<div class="dropdown">
 		<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			Langues
 		</button>
+		
 		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 			<a class="nav-item" href="{{ path('app_index', {'_locale':'fr'}) }}">Fr</a>
 			<a class="nav-item" href="{{ path('app_index', {'_locale':'en'}) }}">En</a>

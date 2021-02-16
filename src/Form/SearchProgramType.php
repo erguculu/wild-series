@@ -13,7 +13,7 @@ class SearchProgramType extends AbstractType
         {
             $builder
                 ->add('search', SearchType::class, [
-                    'label' => 'Recherche une série'
+                    'label' => 'Rechercher une série'
                 ]);
         }
     

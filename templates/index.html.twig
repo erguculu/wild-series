@@ -15,7 +15,7 @@
 							- Catégorie :
 							{{ program.category.name }}</h2>
 						<p>{{ program.summary }}</p>
-						<a href="{{ path("program_show", { slug: program.slug }) }}">Plus de détail</a>
+						<a href="{{ path("program_show", { slug: program.slug }) }}">{{ 'see.more'|trans }}</a>
 					</div>
 				{% endfor %}
 			</div>

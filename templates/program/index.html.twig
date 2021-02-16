@@ -4,10 +4,12 @@
 
 {% block body %}
 	<h1>{{ 'all.program'|trans }}</h1>
+	<div class="col-md-4 offset-7">
 	{{ form_start(form) }}
 	{{ form_widget(form) }}
 	<button>Rechercher</button>
 	{{ form_end(form) }}
+	</div>
 	<div class="container-fluid">
 		<div class="container">
 			<div class="season_description">
@@ -18,7 +20,7 @@
 							- {{ 'category'|trans }} 
 							{{ program.category.name }}</h2>
 						<p>{{ program.summary }}</p>
-						<a href="{{ path("program_show", { slug: program.slug }) }}">Plus de détail</a>
+						<a href="{{ path("program_show", { slug: program.slug }) }}">{{ 'see.more'|trans }}</a>
 					</div>
 				{% else %}
 					 {{ 'no.serie.found'|trans }}

@@ -1,17 +1,28 @@
+
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'actor'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - Acteurs{% endblock %}
 
 {% block body %}
-<h2>{{ 'all.actor'|trans }}</h2>
-<ul>
-    {% for actor in actors %}
-    <li><a href="{{ path('actor_show', {id : actor.id }) }}">{{ actor.firstname }}</a></li>
-    {% else %}
-    <li>{{ 'no.actor.found'|trans }}</li>
-    {% endfor %}
-</ul>
-<a href="{{ path('app_index') }}">
-        {{ 'back.home'|trans }}
-    </a>
+    <div class="container-fluid">
+        <h1 class="text-center my-4">{{ 'actors'|trans }}</h1>
+        <div class="row justify-content-center">
+            {% for actor in actors %}
+                <div class="card mb-3 ml-2 align-items-center" style="width: 15rem;">
+                    <img src="/uploads/{{actor.photo}}"
+                         class="card-img-top"
+                         alt="{{ actor.firstname }}"
+                         style="width: 14rem;">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ actor.firstname }}</h2>
+                        <a href="{{ path("actor_show", { id: actor.id }) }}" class="card-link">{{ 'see.more'|trans }}</a>
+                    </div>
+                </div>
+            {% else %}
+                {{ 'no_actor'|trans }}
+            {% endfor %}
+        </div>
+        <a href='{{path("actor_new")}}'>{{ 'add.an.actor'|trans }}</a><br>
+        <a href="{{ path('app_index') }}">{{ 'back_home'|trans }}</a>
+    </div>
 {% endblock %}
